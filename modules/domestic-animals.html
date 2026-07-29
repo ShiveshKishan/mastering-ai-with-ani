@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Domestic Animals — MasteringAIWithAni</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+ </head>
+<body>
+  <header>
+    <h1>Domestic Animals</h1>
+  </header>
+
+  <div class="controls">
+    <label for="modeSelect" class="sr-only">Mode</label>
+    <select id="modeSelect" aria-label="Mode selector">
+      <option value="flashcard">Flashcard</option>
+      <option value="audio">Audio</option>
+      <option value="quiz">Quiz</option>
+      <option value="spelling">Spelling</option>
+    </select>
+    <button id="shuffleBtn" class="secondary">Shuffle</button>
+    <button id="prevBtn" class="secondary">Prev</button>
+    <button id="nextBtn" class="secondary">Next</button>
+    <button id="speakBtn">Speak</button>
+  </div>
+
+  <main>
+    <div id="card" class="card" tabindex="0">
+      <div id="image" class="image" aria-hidden="true">🐱</div>
+      <div id="caption" class="caption">Cat</div>
+    </div>
+
+    <div id="quizArea" class="panel hidden" aria-live="polite"></div>
+
+    <div id="spellingArea" class="panel hidden">
+      <input id="spellingInput" placeholder="Type the word" autocomplete="off">
+      <button id="checkSpellingBtn">Check</button>
+      <div id="spellingResult" role="status" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/domestic.js"></script>
+</body>
+</html>

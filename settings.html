@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings — MasteringAIWithAni</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Global Settings</h1>
+    <p>Configure default modes and accessibility preferences.</p>
+  </header>
+
+  <main>
+    <form id="settingsForm" onsubmit="return false;">
+      <label for="modeSelect">Default Mode</label>
+      <select id="modeSelect">
+        <option value="flashcard">Flashcard</option>
+        <option value="audio">Audio</option>
+        <option value="quiz">Quiz</option>
+        <option value="spelling">Spelling</option>
+      </select>
+
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button id="saveBtn">Save</button>
+        <button id="resetBtn" type="button" class="secondary">Reset to default</button>
+        <a href="index.html" class="secondary" style="display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;color:inherit;border:1px solid #ddd">Back to Dashboard</a>
+      </div>
+
+      <div id="status" aria-live="polite" style="margin-top:12px"></div>
+    </form>
+  </main>
+
+  <script src="assets/js/settings.js"></script>
+  <script>
+    const $mode = document.getElementById('modeSelect');
+    const $save = document.getElementById('saveBtn');
+    const $reset = document.getElementById('resetBtn');
+    const $status = document.getElementById('status');
+
+    function showStatus(msg, ms=1800){
+      $status.textContent = msg;
+      setTimeout(()=>{ $status.textContent=''; }, ms);
+    }
+
+    // initialize from stored settings
+    document.addEventListener('DOMContentLoaded', ()=>{
+      try{
+        const m = (window.MASettings && MASettings.getMode && MASettings.getMode()) || 'flashcard';
+        $mode.value = m;
+      }catch(e){ $mode.value = 'flashcard'; }
+    });
+
+    $save.addEventListener('click', ()=>{
+      const m = $mode.value;
+      if(window.MASettings && MASettings.setMode) MASettings.setMode(m);
+      showStatus('Saved.');
+    });
+
+    $reset.addEventListener('click', ()=>{
+      const defaultMode = 'flashcard';
+      $mode.value = defaultMode;
+      if(window.MASettings && MASettings.setMode) MASettings.setMode(defaultMode);
+      showStatus('Reset to default.');
+    });
+  </script>
+</body>
+</html>

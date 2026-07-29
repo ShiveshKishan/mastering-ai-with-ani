@@ -1,0 +1,34 @@
+/* Accessible, minimal styles for MasteringAIWithAni */
+:root{
+  --bg:#ffffff;
+  --fg:#0b0b0b;
+  --accent:#0b84ff;
+  --card-bg:#f7f7f7;
+}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+  background:var(--bg);
+  color:var(--fg);
+  -webkit-font-smoothing:antialiased;
+  padding:16px;
+}
+header h1{font-size:1.6rem;margin:0 0 12px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+button,select,input{font-size:1.05rem;padding:10px 14px;border-radius:8px;border:1px solid #ddd}
+button{background:var(--accent);color:#fff;border:none}
+button.secondary{background:#e0e0e0;color:var(--fg)}
+.card{background:var(--card-bg);border-radius:12px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;box-shadow:0 4px 8px rgba(0,0,0,0.05)}
+.image{font-size:120px;line-height:1}
+.caption{font-size:1.6rem;margin-top:12px}
+.panel{margin-top:12px}
+.hidden{display:none}
+#quizArea .option{display:block;margin:8px 0;padding:12px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer}
+#quizArea .option.correct{border-color:green;background:#e6ffea}
+#quizArea .option.wrong{border-color:red;background:#ffecec}
+#spellingInput{width:70%;margin-right:8px}
+@media (max-width:480px){
+  .image{font-size:84px}
+  .caption{font-size:1.2rem}
+}
