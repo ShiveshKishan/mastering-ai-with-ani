@@ -3,21 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Domestic Animals — MasteringAIWithAni</title>
+  <title>Spelling — MasteringAIWithAni</title>
   <link rel="stylesheet" href="../assets/css/main.css">
- </head>
+</head>
 <body>
   <header>
-    <h1>Domestic Animals</h1>
+    <h1>Spelling</h1>
     <div class="header-actions">
+      <button id="helpBtn" class="icon-button" type="button" aria-label="Show spelling help">?</button>
       <a class="close" href="../index.html" aria-label="Close and return to dashboard">✕</a>
     </div>
   </header>
 
-  <div id="progress" class="progress" aria-hidden="false" aria-label="Module progress"></div>
-
-  <div class="controls">
-  </div>
+  <div id="progress" class="progress" aria-label="Progress"></div>
 
   <main>
     <div id="card" class="card" tabindex="0">
@@ -25,16 +23,15 @@
       <div id="caption" class="caption">Cat</div>
     </div>
 
-    <div id="quizArea" class="panel hidden" aria-live="polite"></div>
-
-    <div id="spellingArea" class="panel hidden">
-      <input id="spellingInput" placeholder="Type the word" autocomplete="off">
+    <div id="spellingArea" class="panel">
+      <input id="spellingInput" placeholder="Type the word" autocomplete="off" />
       <button id="checkSpellingBtn">Check</button>
-      <div id="spellingResult" role="status" aria-live="polite"></div>
     </div>
+    <div id="message" class="status-message" role="status" aria-live="polite"></div>
   </main>
 
-  <script src="../assets/js/settings.js?v=1"></script>
-  <script src="../assets/js/domestic.js?v=2"></script>
+  <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/loadCategories.js"></script>
+  <script src="../assets/js/spelling.js"></script>
 </body>
 </html>

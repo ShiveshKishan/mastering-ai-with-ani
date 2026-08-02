@@ -14,13 +14,15 @@
 
   <main>
     <form id="settingsForm" onsubmit="return false;">
-      <label for="modeSelect">Default Mode</label>
-      <select id="modeSelect">
-        <option value="flashcard">Flashcard</option>
-        <option value="audio">Audio</option>
-        <option value="quiz">Quiz</option>
-        <option value="spelling">Spelling</option>
-      </select>
+      <label for="showLabelsCheckbox" style="display:block;margin-top:16px;">
+        <input id="showLabelsCheckbox" type="checkbox" checked>
+        Show animal label under the image
+      </label>
+
+      <label for="playImageNameCheckbox" style="display:block;margin-top:12px;">
+        <input id="playImageNameCheckbox" type="checkbox">
+        Play image name when opened
+      </label>
 
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
         <button id="saveBtn">Save</button>
@@ -34,7 +36,8 @@
 
   <script src="assets/js/settings.js"></script>
   <script>
-    const $mode = document.getElementById('modeSelect');
+    const $showLabels = document.getElementById('showLabelsCheckbox');
+    const $playImageName = document.getElementById('playImageNameCheckbox');
     const $save = document.getElementById('saveBtn');
     const $reset = document.getElementById('resetBtn');
     const $status = document.getElementById('status');
@@ -47,21 +50,24 @@
     // initialize from stored settings
     document.addEventListener('DOMContentLoaded', ()=>{
       try{
-        const m = (window.MASettings && MASettings.getMode && MASettings.getMode()) || 'flashcard';
-        $mode.value = m;
-      }catch(e){ $mode.value = 'flashcard'; }
+        const showLabels = (window.MASettings && MASettings.getShowLabels && MASettings.getShowLabels());
+        $showLabels.checked = showLabels;
+        const playName = (window.MASettings && MASettings.getPlayImageName && MASettings.getPlayImageName());
+        $playImageName.checked = playName;
+      }catch(e){ $showLabels.checked = true; $playImageName.checked = false; }
     });
 
     $save.addEventListener('click', ()=>{
-      const m = $mode.value;
-      if(window.MASettings && MASettings.setMode) MASettings.setMode(m);
+      if(window.MASettings && MASettings.setShowLabels) MASettings.setShowLabels($showLabels.checked);
+      if(window.MASettings && MASettings.setPlayImageName) MASettings.setPlayImageName($playImageName.checked);
       showStatus('Saved.');
     });
 
     $reset.addEventListener('click', ()=>{
-      const defaultMode = 'flashcard';
-      $mode.value = defaultMode;
-      if(window.MASettings && MASettings.setMode) MASettings.setMode(defaultMode);
+      $showLabels.checked = true;
+      $playImageName.checked = false;
+      if(window.MASettings && MASettings.setShowLabels) MASettings.setShowLabels(true);
+      if(window.MASettings && MASettings.setPlayImageName) MASettings.setPlayImageName(false);
       showStatus('Reset to default.');
     });
   </script>

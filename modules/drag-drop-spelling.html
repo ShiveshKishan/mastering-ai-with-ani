@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Drag Spelling — MasteringAIWithAni</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Spell by Dragging</h1>
+    <div class="header-actions">
+      <button id="helpBtn" class="icon-button" type="button" aria-label="Show spelling help">?</button>
+      <a class="close" href="../index.html" aria-label="Close and return to dashboard">✕</a>
+    </div>
+  </header>
+
+  <div id="progress" class="progress" aria-label="Progress"></div>
+
+  <main>
+    <div id="card" class="card" tabindex="0">
+      <img id="image" class="image" src="" alt="">
+      <div id="caption" class="caption"></div>
+    </div>
+
+    <div class="instructions" id="instruction">Drag the letters into the boxes below to spell the word.</div>
+
+    <div id="slots" class="drop-zone" aria-label="Spelling slots"></div>
+
+    <div id="letterBank" class="letter-bank" aria-label="Letter choices"></div>
+
+    <div class="controls" style="justify-content:center;margin-top:12px;">
+      <button id="clearBtn" class="secondary" type="button">Clear</button>
+      <button id="checkBtn" type="button">Check</button>
+    </div>
+
+    <div id="message" class="status-message" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/loadCategories.js"></script>
+  <script src="../assets/js/drag-drop-spelling.js?v=1"></script>
+</body>
+</html>

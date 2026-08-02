@@ -16,19 +16,89 @@ body{
 }
 header h1{font-size:1.6rem;margin:0 0 12px}
 .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+header{position:relative}
+.close{display:inline-block;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--fg);border:1px solid #ddd;background:#fff}
+.header-actions{position:absolute;right:8px;top:8px;display:flex;gap:8px;align-items:center}
+.speak{font-size:1.05rem;padding:6px 10px;border-radius:8px;border:1px solid #ddd;background:#fff}
+.progress{display:flex;gap:8px;align-items:center;margin:12px 0}
+.progress button{background:#fff;border:1px solid #d4d4d4;padding:8px 10px;border-radius:8px;min-width:36px;text-align:center;cursor:pointer;color:#333;transition:background 0.2s,border-color 0.2s,color 0.2s;}
+.progress button.pending{background:#fff;border-color:#d4d4d4;color:#555}
+.progress button.done{background:#4caf50;color:#fff;border-color:#4caf50;font-weight:700}
+.progress button.current{background:#b2dfdb;border-color:#4caf50;color:#0d5a3d;font-weight:700;box-shadow:0 0 0 2px rgba(76,175,80,0.18)}
+.progress button.current.done{background:#81c784;color:#0d5a3d;border-color:#4caf50;font-weight:700}
 button,select,input{font-size:1.05rem;padding:10px 14px;border-radius:8px;border:1px solid #ddd}
 button{background:var(--accent);color:#fff;border:none}
 button.secondary{background:#e0e0e0;color:var(--fg)}
-.card{background:var(--card-bg);border-radius:12px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;box-shadow:0 4px 8px rgba(0,0,0,0.05)}
-.image{font-size:120px;line-height:1}
+.icon-button{width:36px;height:36px;padding:0;border-radius:50%;border:1px solid #ddd;background:#fff;color:var(--fg);font-size:1.1rem;font-weight:700;cursor:pointer}
+.icon-button:hover{background:#f0f8ff}
+.card{background:var(--card-bg);border-radius:12px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;box-shadow:0 4px 8px rgba(0,0,0,0.05);transition:border-color 0.3s ease,box-shadow 0.3s ease}
+.card.current{border:2px solid var(--accent);box-shadow:0 6px 12px rgba(0,132,255,0.18)}
+.image{width:240px;height:240px;object-fit:contain;border-radius:18px;background:#fff;border:1px solid #ddd}
 .caption{font-size:1.6rem;margin-top:12px}
 .panel{margin-top:12px}
 .hidden{display:none}
-#quizArea .option{display:block;margin:8px 0;padding:12px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer}
-#quizArea .option.correct{border-color:green;background:#e6ffea}
-#quizArea .option.wrong{border-color:red;background:#ffecec}
+#quizArea{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:14px;
+}
+#quizArea .option{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-width:120px;
+  padding:12px 16px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  background:#fff;
+  color:var(--fg);
+  cursor:pointer;
+}
+#quizArea .option.correct{border-color:green;background:#e6ffea;color:var(--fg)}
+#quizArea .option.wrong{border-color:red;background:#ffecec;color:var(--fg)}
+#quizArea .option.correct{animation:pop .45s ease forwards}
+#quizArea .option.wrong{animation:shake .5s ease}
+
+@keyframes pop{
+  0%{transform:scale(0.95);opacity:0.6}
+  60%{transform:scale(1.08);opacity:1}
+  100%{transform:scale(1)}
+}
+
+@keyframes shake{
+  0%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+  100%{transform:translateX(0)}
+}
 #spellingInput{width:70%;margin-right:8px}
+.category-card{border:1px solid #ddd;background:#fff;padding:16px;border-radius:14px;margin-bottom:14px;box-shadow:0 4px 10px rgba(0,0,0,0.04)}
+.category-card h3{margin:0 0 10px;font-size:1.2rem}
+.category-links{display:flex;flex-wrap:wrap;gap:8px}
+.mode-link{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #ddd;background:#f7f7f7;color:var(--fg);text-decoration:none}
+.mode-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.instructions{margin:16px 0 8px;font-size:1rem;color:#333;max-width:780px}
+.drop-zone{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;min-height:70px;margin-bottom:14px}
+.drop-slot{width:60px;height:60px;border:2px dashed #ccc;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#fafafa;transition:background 0.2s,border-color 0.2s}
+.drop-slot.over{border-color:var(--accent);background:rgba(11,132,255,0.08)}
+.drop-slot.correct{border-color:green;background:#e6ffea}
+.drop-slot.wrong{border-color:red;background:#ffecec}
+.letter-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:12px}
+.letter-card{min-width:52px;min-height:52px;padding:0 10px;border-radius:14px;border:1px solid #bbb;background:#fff;color:var(--fg);font-size:1.25rem;font-weight:700;cursor:grab;display:inline-flex;align-items:center;justify-content:center}
+.letter-card.used{opacity:0.5;cursor:default}
+.letter-card:focus{outline:3px solid rgba(11,132,255,0.35)}
+.status-message{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);min-width:240px;padding:18px 24px;border-radius:18px;background:rgba(255,255,255,0.96);box-shadow:0 16px 40px rgba(0,0,0,0.2);font-size:2rem;font-weight:700;text-align:center;color:#111;z-index:1000;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.15s ease,visibility 0.15s ease;}
+.status-message.visible{opacity:1;visibility:visible;pointer-events:auto}
+.status-message .modal-actions{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.status-message .modal-actions button{min-width:120px;padding:10px 14px;border:none;border-radius:10px;background:#4caf50;color:#fff;font-weight:700;cursor:pointer}
+.status-message .modal-actions button.secondary{background:#f0f0f0;color:#333}
+.status-message .message-text{display:block;line-height:1.2;font-size:1.1em}
 @media (max-width:480px){
   .image{font-size:84px}
   .caption{font-size:1.2rem}
+  .letter-card{min-width:46px;min-height:46px;font-size:1.1rem}
 }

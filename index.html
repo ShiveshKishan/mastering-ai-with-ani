@@ -14,11 +14,8 @@
 
   <main>
     <section>
-      <h2>Modules</h2>
-      <ul>
-        <li><a href="modules/domestic-animals.html">Domestic Animals</a></li>
-        <!-- Add new modules here -->
-      </ul>
+      <h2>Topics</h2>
+      <div id="dashboardCategories"></div>
     </section>
 
     <section>
@@ -27,16 +24,11 @@
         <li><a href="settings.html">Global Settings</a></li>
       </ul>
     </section>
-
-    <section>
-      <h2>Notes</h2>
-      <ul>
-        <li>Hosted on GitHub Pages — push to the repo's `gh-pages` or `main` branch with Pages enabled.</li>
-        <li>Open this folder in a simple static server for local testing, e.g.:</li>
-      </ul>
-      <pre><code>python -m http.server 8000</code></pre>
-    </section>
   </main>
 
+  <script src="assets/js/loadCategories.js"></script>
+  <script src="assets/js/dashboard.js"></script>
 </body>
 </html>
+
+
