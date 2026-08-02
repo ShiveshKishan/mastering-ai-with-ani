@@ -26,7 +26,6 @@
   const $letterBank = document.getElementById('letterBank');
   const $clearBtn = document.getElementById('clearBtn');
   const $checkBtn = document.getElementById('checkBtn');
-  const $message = document.getElementById('message');
 
   function speak(text){
     if (!window.speechSynthesis) return;
