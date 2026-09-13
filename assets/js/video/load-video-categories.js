@@ -1,6 +1,6 @@
 (function(){
   const categories = [
-    'getting-started',
+    'african-animals',
     'animals',
     'daily-activities',
     'vehicles',

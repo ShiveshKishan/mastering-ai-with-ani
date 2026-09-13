@@ -1,9 +1,9 @@
 (function (window) {
-    const gettingStarted = {
-        id: 'gettingStarted',
-        title: 'Getting Started',
+    const africanAnimals = {
+        id: 'africanAnimals',
+        title: 'African Animals',
         description: 'Practice watching and remembering details.',
-        thumbnail: '../assets/img/domestic-animals/cat.jpg',
+        thumbnail: '../assets/img/video-thumbnail/african_animals.png',
         items: [
             {
 
@@ -88,5 +88,5 @@
     };
 
     window.MAVideoContent = window.MAVideoContent || { categories: {} };
-    window.MAVideoContent.categories[gettingStarted.id] = gettingStarted;
+    window.MAVideoContent.categories[africanAnimals.id] = africanAnimals;
 })(window);

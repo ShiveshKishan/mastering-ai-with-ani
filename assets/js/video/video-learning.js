@@ -163,6 +163,8 @@
     elements.feedback.className = 'video-feedback';
     elements.answerList.innerHTML = '';
 
+    speakFeedback(question.question);
+
     shuffle(question.options).forEach(option => {
       const button = document.createElement('button');
       button.type = 'button';
