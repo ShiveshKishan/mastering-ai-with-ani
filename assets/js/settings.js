@@ -17,7 +17,17 @@
       const stored = read().playImageName;
       return typeof stored === 'boolean' ? stored : false;
     },
-    setPlayImageName: (value)=>{const s=read(); s.playImageName=Boolean(value); write(s)}
+    setPlayImageName: (value)=>{const s=read(); s.playImageName=Boolean(value); write(s)},
+    getVideoPauseSeconds: ()=> {
+      const stored = Number(read().videoPauseSeconds);
+      return Number.isFinite(stored) && stored >= 0 && stored <= 60 ? stored : 3;
+    },
+    setVideoPauseSeconds: (value)=>{
+      const seconds = Number(value);
+      const s=read();
+      s.videoPauseSeconds = Number.isFinite(seconds) && seconds >= 0 && seconds <= 60 ? seconds : 3;
+      write(s);
+    }
   };
   window.MASettings = Settings;
 })(window);

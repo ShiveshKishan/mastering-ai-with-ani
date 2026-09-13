@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video Learning - MasteringAIWithAni</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/video-learning.css">
+</head>
+<body class="video-page">
+  <header>
+    <div class="header-actions">
+      <a class="close" href="../index.html" aria-label="Close and return to dashboard">X</a>
+    </div>
+    <h1>Video Learning</h1>
+    <p>Watch carefully, then answer what you noticed.</p>
+  </header>
+
+  <main>
+    <div id="videoError" class="video-error" role="alert" hidden></div>
+    <section id="videoShell" class="video-shell" aria-label="Video lesson">
+      <div class="video-panel">
+        <div class="video-progress" aria-live="polite">
+          <span id="lessonProgress">Video 0 of 0</span>
+          <span id="categoryTitle"></span>
+        </div>
+        <div id="videoFrame" class="video-frame" aria-label="YouTube video"></div>
+        <p id="videoStatus" class="video-status" role="status" aria-live="polite">Loading video...</p>
+        <div class="video-actions">
+          <button id="replayButton" class="secondary" type="button" disabled>Replay Video</button>
+        </div>
+      </div>
+
+      <section id="questionPanel" class="question-panel" hidden aria-live="polite">
+        <div id="questionProgress" class="video-progress">Question 0 of 0</div>
+        <h2 id="questionText"></h2>
+        <div id="answerList" class="answer-list"></div>
+        <p id="feedback" class="video-feedback" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+
+    <section id="completionPanel" class="video-panel video-complete" hidden>
+      <h2>Great Job!</h2>
+      <p id="completionText"></p>
+      <div class="video-actions" style="justify-content:center">
+        <button id="repeatButton" type="button">Repeat</button>
+        <a class="close" href="../index.html">Dashboard</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/video/load-video-categories.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="../assets/js/video/video-learning.js"></script>
+</body>
+</html>

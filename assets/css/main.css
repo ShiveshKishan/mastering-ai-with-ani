@@ -81,6 +81,8 @@ button.secondary{background:#e0e0e0;color:var(--fg)}
 .category-links{display:flex;flex-wrap:wrap;gap:8px}
 .mode-link{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #ddd;background:#f7f7f7;color:var(--fg);text-decoration:none}
 .mode-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.video-entry{margin-top:18px;padding:18px;border:1px solid #b9d9e8;border-radius:14px;background:linear-gradient(135deg,#effaff,#fffaf0)}
+.video-entry p{max-width:620px;color:#3d596d}
 .instructions{margin:16px 0 8px;font-size:1rem;color:#333;max-width:780px}
 .drop-zone{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;min-height:70px;margin-bottom:14px}
 .drop-slot{width:60px;height:60px;border:2px dashed #ccc;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#fafafa;transition:background 0.2s,border-color 0.2s}
