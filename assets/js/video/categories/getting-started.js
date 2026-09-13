@@ -2,6 +2,8 @@
     const gettingStarted = {
         id: 'gettingStarted',
         title: 'Getting Started',
+        description: 'Practice watching and remembering details.',
+        thumbnail: '../assets/img/domestic-animals/cat.jpg',
         items: [
             {
 
@@ -70,7 +72,7 @@
                         id: 'q3',
                         enabled: true,
                         question: 'What was floating on the water?',
-                        options: ['Lilies', 'Rocks', 'Branches'],
+                        options: ['Lilies', 'Rocks', 'Branches', 'Fish'],
                         answer: 'Lilies'
                     },
                     {

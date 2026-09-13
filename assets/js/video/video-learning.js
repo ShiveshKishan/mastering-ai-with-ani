@@ -53,14 +53,25 @@
     elements.shell.hidden = true;
   }
 
-  function getLessons(){
+  function getSelectedCategory(){
     const registry = window.MAVideoContent && MAVideoContent.categories;
-    const lessons = [];
-    if (!registry) return lessons;
+    const categoryId = new URLSearchParams(window.location.search).get('category');
+    return registry && categoryId ? registry[categoryId] : null;
+  }
 
-    Object.values(registry).forEach(category => {
-      if (!category || !Array.isArray(category.items)) return;
-      category.items.forEach(lesson => {
+  function speakFeedback(text){
+    if (!window.speechSynthesis) return;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.95;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function getLessons(category){
+    const lessons = [];
+    if (!category || !Array.isArray(category.items)) return lessons;
+
+    category.items.forEach(lesson => {
         if (!lesson || typeof lesson.id !== 'string' || !lesson.id.trim() ||
             typeof lesson.title !== 'string' || !lesson.title.trim() ||
             typeof lesson.videoId !== 'string' || !lesson.videoId.trim() ||
@@ -80,8 +91,7 @@
           }
           return valid;
         });
-        if (questions.length) lessons.push({ lesson, questions, categoryTitle: category.title || category.id });
-      });
+      if (questions.length) lessons.push({ lesson, questions, categoryTitle: category.title || category.id });
     });
     return lessons;
   }
@@ -141,7 +151,7 @@
     if (!currentLesson || !currentQuestions.length) return;
     elements.videoStatus.textContent = 'The video is finished. Think about what you saw.';
     elements.questionPanel.hidden = false;
-    renderQuestion();
+    if (!elements.answerList.children.length) renderQuestion();
   }
 
   function renderQuestion(){
@@ -168,7 +178,8 @@
     if (option !== answer) {
       button.classList.add('wrong');
       button.disabled = true;
-      elements.feedback.textContent = 'Try again';
+      speakFeedback('Wrong, please try again');
+      elements.feedback.textContent = 'Wrong, please try again';
       elements.feedback.className = 'video-feedback error';
       return;
     }
@@ -176,6 +187,7 @@
     questionLocked = true;
     button.classList.add('correct');
     elements.answerList.querySelectorAll('button').forEach(answerButton => { answerButton.disabled = true; });
+    speakFeedback('Well done');
     elements.feedback.textContent = 'Well done!';
     elements.feedback.className = 'video-feedback success';
     pauseTimer = window.setTimeout(nextQuestion, getPauseSeconds() * 1000);
@@ -200,7 +212,12 @@
 
   function startSession(){
     clearTimeout(pauseTimer);
-    const lessons = getLessons();
+    const category = getSelectedCategory();
+    if (!category) {
+      setError('Choose a video category before starting a lesson.');
+      return;
+    }
+    const lessons = getLessons(category);
     if (!lessons.length) {
       setError('No complete video lessons are available yet. Add a lesson with at least one enabled question.');
       return;

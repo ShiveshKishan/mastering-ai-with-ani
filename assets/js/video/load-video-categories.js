@@ -1,6 +1,10 @@
 (function(){
   const categories = [
-    'getting-started'
+    'getting-started',
+    'animals',
+    'daily-activities',
+    'vehicles',
+    'nature'
   ];
 
   const scriptUrl = document.currentScript && document.currentScript.src;

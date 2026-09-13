@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video Learning - Choose a Category</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/video-learning.css">
+</head>
+<body class="video-page video-category-page">
+  <header>
+    <div class="header-actions">
+      <a class="close" href="../index.html" aria-label="Close and return to dashboard">X</a>
+    </div>
+    <h1>Video Learning</h1>
+    <p>Choose a category to begin.</p>
+  </header>
+
+  <main>
+    <div id="categoryError" class="video-error" role="alert" hidden></div>
+    <section id="videoCategories" class="video-category-grid" aria-label="Video categories"></section>
+  </main>
+
+  <script src="../assets/js/video/load-video-categories.js"></script>
+  <script src="../assets/js/video/video-categories.js"></script>
+</body>
+</html>
