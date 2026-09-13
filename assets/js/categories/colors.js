@@ -1,5 +1,5 @@
 (function(window){
-  const folder = '../assets/img/colors/';
+  const folder = '../../assets/img/colors/';
   const colors = {
     title: 'Colors',
     items: [

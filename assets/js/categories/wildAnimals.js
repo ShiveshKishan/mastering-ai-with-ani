@@ -1,5 +1,5 @@
 (function(window){
-  const folder = '../assets/img/wild-animals/';
+  const folder = '../../assets/img/wild-animals/';
   const wildAnimals = {
     title: 'Wild Animals',
     items: [

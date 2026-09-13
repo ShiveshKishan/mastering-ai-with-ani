@@ -1,5 +1,5 @@
 (function(window){
-  const folder = '../assets/img/vegetables/';
+  const folder = '../../assets/img/vegetables/';
   const vegetables = {
     title: 'Vegetables',
     items: [
