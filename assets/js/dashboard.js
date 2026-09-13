@@ -1,10 +1,10 @@
 (function(){
   function getModeLinks(categoryKey){
     return [
-      { label: 'Flashcard', href: `modules/flashcard.html?category=${categoryKey}` },
-      { label: 'Quiz', href: `modules/quiz.html?category=${categoryKey}` },
-      { label: 'Spelling', href: `modules/spelling.html?category=${categoryKey}` },
-      { label: 'Drag & Spell', href: `modules/drag-drop-spelling.html?category=${categoryKey}` }
+      { label: 'Flashcard', href: `modules/flash_cards/flashcard.html?category=${categoryKey}` },
+      { label: 'Quiz', href: `modules/flash_cards/quiz.html?category=${categoryKey}` },
+      { label: 'Spelling', href: `modules/flash_cards/spelling.html?category=${categoryKey}` },
+      { label: 'Drag & Spell', href: `modules/flash_cards/drag-drop-spelling.html?category=${categoryKey}` }
     ];
   }
 
